@@ -1,21 +1,67 @@
-body {
-  padding: 20px;
-  background-image: linear-gradient(to top right, rgb(40, 40, 71), rgb(46, 43, 53) 60%);
-}
-.logo{
-  display: flex;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+header{
+  background-image: linear-gradient(to top right, rgb(129, 129, 255),rgb(44, 44, 83));
+  padding: 1em;
+  font: 14px "Arial", Helvetica, sans-serif;
   color: white;
+  text-shadow: 1px 1px 10px black;
 }
-.logo img{
-  height: 60px;
-  margin-left: 185px;
+.Imagen{  
+  background-image: linear-gradient(rgba(30, 30, 112, 0.521),rgba(89, 103, 223, 0.555)),url(estudio2.jpeg);
+  height: 30em;
+  background-size: cover;
+  
 }
-.info{
-  background-color: rgba(102, 91, 116, 0.466);
+h2{
+  font: 30px "Arial", Helvetica, sans-serif, bolder;
+}
+.descripcion{
+  letter-spacing: 2px;
+  margin-left: 20em;
+  align-content: center;
+  padding: 1em;
+  font: 14px "Arial", Helvetica, sans-serif;
+  text-align: center;
+  width: 50em;
+}
+.ventajas ul{
+  list-style-position: inside;
+  text-align: left;
+}
+.ventajas{
+  letter-spacing: 2px;
+  margin-left: 20em;
+  padding: 1em;
+  width: 50em;
+  align-content: center;
+  text-align: center;
+  font: 14px "Arial", Helvetica, sans-serif;
+}
+.SJM{
+  text-align: left;
+  font: 14px "Arial", Helvetica, sans-serif;
   color: white;
-  width: 400px;
-  padding: 15px;
-  border-radius: 10px;
-  font: 14px "Arial";
+  background-image: linear-gradient(rgba(30, 30, 112, 0.521),rgba(89, 103, 223, 0.555)), url(sjm.jpg);
+  height: 25em;
+  background-size: cover;
+}
+.ubicacion{
+  letter-spacing: 2px;
+  margin-left: 20em;
+  align-content: center;
+  padding: 1em;
+  font: 14px "Arial", Helvetica, sans-serif;
+  text-align: center;
+  width: 50em;
+}
+footer{
+  padding: 1em;
+  font: 14px "Arial", Helvetica, sans-serif, bold;
+  color: white;
+  height: 5em;
+  margin-bottom: 0;
+  background-image: linear-gradient(rgb(60, 60, 109),rgb(77, 83, 136));
+}
+html, body {
+  padding: 0;
+  margin: 0;
 }
