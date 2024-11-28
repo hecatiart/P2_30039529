@@ -1,0 +1,100 @@
+html, body {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+  
+  header{
+    background-image: linear-gradient(to top right, rgb(129, 129, 255),rgb(44, 44, 83));
+    padding: 0.5em;
+    font: 14px "Arial", Helvetica, sans-serif;
+    color: white;
+    text-shadow: 1px 1px 10px black;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+  nav a{
+    font: 16px "Arial", Helvetica, sans-serif;
+    color: white;
+    text-shadow: 1px 1px 10px black;
+    margin-right: 1em;
+  }
+  .Imagen{  
+    background-image: linear-gradient(rgba(30, 30, 112, 0.521),rgba(89, 103, 223, 0.555)),url(estudio2.jpeg);
+    height: 30em;
+    background-size: cover;
+    background-position: center;
+    
+  }
+  h2{
+    font: 30px "Arial", Helvetica, sans-serif, bolder;
+    text-align: center;
+  }
+  .descripcion, .ventajas, .ubicacion{
+    letter-spacing: 2px;
+    margin: 1em auto;
+    align-content: center;
+    padding: 1em;
+    font: 14px "Arial", Helvetica, sans-serif;
+    text-align: center;
+    max-width: 90%;
+  }
+  .ventajas ul{
+    list-style-position: inside;
+    text-align: left;
+    padding-left: 0;
+  }
+  .SJM{
+    text-align: left;
+    font: 14px "Arial", Helvetica, sans-serif;
+    color: white;
+    background-image: linear-gradient(rgba(30, 30, 112, 0.521),rgba(89, 103, 223, 0.555)), url(sjm.jpg);
+    height: 25em;
+    background-size: cover;
+    background-position: top;
+  }
+  footer{
+    padding: 1em;
+    font: 14px "Arial", Helvetica, sans-serif, bold;
+    color: white;
+    height: 5em;
+    margin-bottom: 0;
+    background-image: linear-gradient(rgb(60, 60, 109),rgb(77, 83, 136));
+  }
+  
+  @media (max-width: 768px) {
+    .imagen ,.sjm {
+      height: 20em;
+    }
+    .descripcion, .ventajas, .ubicacion{
+      margin: 1em;
+      padding: 0.5em;
+      font-size: 12px;
+    }
+    h2{
+      font-size: 24px;
+    }
+    header, footer{
+      font-size: 12px;
+    }
+  }
+  @media (max-width: 480px) {
+    .Imagen, .SJM {
+      height: 15em;
+    }
+  
+    .descripcion, .ventajas, .ubicacion {
+      font-size: 10px;
+      padding: 0.5em;
+    }
+  
+    h2 {
+      font-size: 20px;
+    }
+  
+    header, footer {
+      font-size: 10px;
+      padding: 0.5em;
+    }
+  }
