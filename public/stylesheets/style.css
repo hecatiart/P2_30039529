@@ -6,10 +6,19 @@ html, body {
 
 header{
   background-image: linear-gradient(to top right, rgb(129, 129, 255),rgb(44, 44, 83));
-  padding: 1em;
+  padding: 0.5em;
   font: 14px "Arial", Helvetica, sans-serif;
   color: white;
   text-shadow: 1px 1px 10px black;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+nav a{
+  font: 16px "Arial", Helvetica, sans-serif;
+  color: white;
+  text-shadow: 1px 1px 10px black;
+  margin-right: 1em;
 }
 .Imagen{  
   background-image: linear-gradient(rgba(30, 30, 112, 0.521),rgba(89, 103, 223, 0.555)),url(estudio2.jpeg);
