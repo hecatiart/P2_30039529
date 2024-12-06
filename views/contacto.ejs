@@ -2,7 +2,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Servicio de Tutoria y Clases particulares</title>
+        <title>Contacto</title>
         <link rel="stylesheet" href="/stylesheets/contacto.css">
     </head>
     <body>
@@ -11,10 +11,28 @@
             <div class="secciones">
                 <nav>
                     <a href="/" class="nav-link">Inicio</a>
-                    <a href="/contacto" class="nav-link">Opiniones</a>
+                    <a href="/contacto" class="nav-link">Contacto</a>
                 </nav>
-            </div>
         </header>
+            </div>
+                <div class="container-form">
+                    <div class="info-form">
+                        <h2>¡Contactanos!</h2>
+                        <p>Contactanos de forma presencial o via telefonica para tener mas información sobre nuestros planes de estudio, profesores, servicios adicionales y mucho más!</p>
+                        <a href="#"><i class="fa fa phone"></i>0426-2134567</a>
+                        <a href="#"> <i class="fa fa-enveloper"></i>tutoriassjm@gmail.com</a>
+                        <a href="#"> <i class="fa fa-map-marked"></i>San Juan de los Morros, Guárico</a>                    
+                    </div>
+                        <form action="/submit" method="POST" autocomplete="off">
+                            <label for="name">Nombre: </label>
+                            <input type="text" name="name" placeholder="Ingresa tu Nombre" class="campo">
+                            <label for="email">Correo Electronico:</label>
+                            <input type="email" name="email" placeholder="Ingresa tu Email" class="campo">
+                            <label for="comment">Comentarios:</label>
+                            <textarea name="comment" placeholder="Ingresa tus Comentarios"></textarea>
+                            <input type="submit" value="Enviar mensaje" class="btn-enviar">
+                        </form>
+                </div>
         <footer>
             <p>Instituto certificado por el Ministerio de Educacion bajo Gaceta Oficial 12314</p>
             <p>RIF: J-12821918-0</p>
