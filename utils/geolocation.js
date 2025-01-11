@@ -3,6 +3,7 @@ const axios = require('axios');
 //API Geolocalizacion
 async function getGeolocation(ip) {
   const apiKey = process.env.IP_API_KEY; // Usa variables de entorno para la clave de la API
+  console.log("Clave de API en hosting:", process.env.IP_API_KEY);
   const url = `https://ipapi.co/${ip}/json/?key=${apiKey}`;
   
   try {
