@@ -5,11 +5,11 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const bodyParser = require('body-parser');
 const ContactosController = require('./controllers/contactoscontroller');
-
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-
 var app = express();
+
+require('dotenv').config();
 
 // Motor de vistas
 app.set('view engine', 'ejs');
@@ -34,6 +34,8 @@ app.use('/users', usersRouter);
 app.get('/', (req, res) => {
   res.render('contacto');
 });
+
+
 
 // Ruta para enviar el Formulario
 app.post('/submit', (req, res) => ContactosController.add(req, res));

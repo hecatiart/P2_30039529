@@ -1,4 +1,5 @@
 const ContactosModel = require('../models/contactosmodel');
+const getGeolocation = require('../utils/geolocation');
 
 class ContactosController {
     constructor() {
@@ -28,15 +29,17 @@ class ContactosController {
             // Agregar IP y fecha
             const ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
             const fecha = new Date().toISOString();
+            const country = await getGeolocation(ip);
             console.log("IP:", ip);
             console.log("fecha:", fecha);
-
+            console.log('Pais:', country);
             // Guardar en la base de datos
             const result = await this.model.saveContact({
                 name,
                 email,
                 comment,
                 ip,
+                country,
                 fecha,
             });
 

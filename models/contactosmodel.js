@@ -21,6 +21,7 @@ class ContactosModel {
                 email TEXT NOT NULL,
                 comment TEXT NOT NULL,
                 ip TEXT NOT NULL,
+                country TEXT NOT NULL,
                 fecha TEXT NOT NULL
             )
         `;
@@ -33,13 +34,13 @@ class ContactosModel {
 
     // Guardar datos en la tabla
     saveContact(data) {
-        const { name, email, comment, ip, fecha } = data;
+        const { name, email, comment, ip, country, fecha } = data;
         const query = `
-            INSERT INTO users (name, email, comment, ip, fecha)
-            VALUES (?, ?, ?, ?, ?)
+            INSERT INTO users (name, email, comment, ip, country, fecha)
+            VALUES (?, ?, ?, ?, ?, ?)
         `;
         return new Promise((resolve, reject) => {
-            this.db.run(query, [name, email, comment, ip, fecha], (err) => {
+            this.db.run(query, [name, email, comment, ip, country, fecha], (err) => {
                 if (err) {
                     reject(err.message);
                 } else {
