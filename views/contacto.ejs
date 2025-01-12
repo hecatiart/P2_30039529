@@ -13,6 +13,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Contacto</title>
         <link rel="stylesheet" href="/stylesheets/contacto.css">
+        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     </head>
     <body>
         <header>
@@ -39,8 +40,32 @@
                             <input type="email" name="email" placeholder="Ingresa tu Email" class="campo">
                             <label for="comment">Comentarios:</label>
                             <textarea name="comment" placeholder="Ingresa tus Comentarios"></textarea>
+                            <div class="g-recaptcha" data-sitekey="6LdlEbUqAAAAANYB2X6V4Bpf2kwwQUVo9rNyC5Ph"></div>
                             <input type="submit" value="Enviar mensaje" class="btn-enviar">
                         </form>
+                        <script>
+                            document.getElementById('contactForm').addEventListener('submit', async function (e) {
+                                e.preventDefault();
+
+                                const recaptchaToken = await grecaptcha.execute('6LdlEbUqAAAAANYB2X6V4Bpf2kwwQUVo9rNyC5Ph', { action: 'submit' });
+
+                                const formData = {
+                                    name: document.querySelector('[name="name"]').value,
+                                    email: document.querySelector('[name="email"]').value,
+                                    comment: document.querySelector('[name="comment"]').value,
+                                    recaptchaToken: recaptchaToken, // Asegúrate de incluir el token
+                                };
+
+                                const response = await fetch('/submit', {
+                                    method: 'POST',
+                                    headers: { 'Content-Type': 'application/json' },
+                                    body: JSON.stringify(formData),
+                                });
+
+                                const result = await response.json();
+                                console.log(result);
+                            });
+                        </script>
                 </div>
         <footer>
             <p>Instituto certificado por el Ministerio de Educacion bajo Gaceta Oficial 12314</p>

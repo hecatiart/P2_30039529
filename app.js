@@ -40,7 +40,6 @@ app.get('/', (req, res) => {
 
 // Ruta para enviar el Formulario
 app.post('/submit', (req, res) => ContactosController.add(req, res));
-
 // Ruta para obtener los datos
 app.get('/contacts', (req, res) => ContactosController.getAll(req, res));
 
