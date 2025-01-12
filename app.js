@@ -21,9 +21,6 @@ app.get('/contacto', (req, res) => {
   res.render('contacto'); 
 });
 
-
-
-
 //Vistas y Middleware
 app.use(logger('dev'));
 app.use(express.json());
