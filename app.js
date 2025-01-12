@@ -7,6 +7,7 @@ const bodyParser = require('body-parser');
 const ContactosController = require('./controllers/contactoscontroller');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+const { default: axios } = require('axios');
 var app = express();
 
 require('dotenv').config();
@@ -19,6 +20,9 @@ app.set('views', path.join(__dirname, 'views'));
 app.get('/contacto', (req, res) => {
   res.render('contacto'); 
 });
+
+
+
 
 //Vistas y Middleware
 app.use(logger('dev'));

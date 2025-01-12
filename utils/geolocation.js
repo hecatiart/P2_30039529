@@ -1,18 +1,17 @@
 const axios = require('axios');
 
 //API Geolocalizacion
-async function getGeolocation(ip) {
-  const apiKey = process.env.IP_API_KEY; // Usa variables de entorno para la clave de la API
-  console.log("Clave de API en hosting:", process.env.IP_API_KEY);
-  const url = `https://ipapi.co/${ip}/json/?key=${apiKey}`;
-  
-  try {
-    const response = await axios.get(url);
-    return response.data.country_name; // Devuelve el país
-  } catch (error) {
-    console.error('Error al obtener la geolocalización:', error);
-    return 'Desconocido';
-  }
+async function getGeolocation() {
+    try {
+        // Obtén la IP pública automáticamente
+        const response = await axios.get(`http://api.ipstack.com/check?access_key=${process.env.IPSTACK_API_KEY}`);
+        const country = response.data.country_name;
+        console.log('IpStack pais:', country);
+        return country;
+    } catch (error) {
+        console.error('Error al obtener la geolocalización:', error);
+    }
 }
+
 
 module.exports = getGeolocation;
