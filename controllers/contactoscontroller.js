@@ -1,5 +1,6 @@
 const ContactosModel = require('../models/contactosmodel');
 const getGeolocation = require('../utils/geolocation');
+const { validateRecaptcha } = require('../utils/recaptcha');
 
 
 class ContactosController {
@@ -18,41 +19,21 @@ class ContactosController {
         }
     }
 
-      
-    // Método para validar reCAPTCHA
-    async validateRecaptcha(token) {
-        const secretKey = process.env.RECAPTCHA_SECRET_KEY; // Asegúrate de que la clave esté en tu .env
-        console.log("Clave Secreta Google:", process.env.RECAPTCHA_SECRET_KEY);
-        //const url = 'https://www.google.com/recaptcha/api/siteverify';
-        const url = `https://www.google.com/recaptcha/api/siteverify?secret=${secretKey}&response=${token}`;
-        
-        try {
-            const response = await axios.post(url, {}, {
-                params: {
-                    secret: secretKey,
-                    response: token,
-                },
-            });
-            console.log('Respuesta de Google:', response.data);
-
-            if (!response.data.success) {
-                throw new Error('Error en la validación de reCAPTCHA.');
-            }
-        } catch (error) {
-            throw new Error('No se pudo verificar el reCAPTCHA.');
-        }
-    }   
-
     // Método para manejar la solicitud y guardar los datos
     async add(req, res) {
         try {
-            console.log("Datos recibidos:", req.body);
-            console.log("Token de reCAPTCHA recibido:", req.body['g-recaptcha-response']);
-            const {name, email, comment, recaptchaToken} = req.body;
+            const recaptchaToken = req.body['g-recaptcha-response'];
+            if (!recaptchaToken) {
+                throw new Error('Falta el token de reCaptcha');
+            }
             
+            console.log("Token de reCAPTCHA recibido:", req.body['g-recaptcha-response']);
             //Validar Captcha
-            await this.validateRecaptcha(recaptchaToken);
+            await validateRecaptcha(recaptchaToken);
 
+            const {name, email, comment} = req.body;
+            console.log("Datos recibidos:", req.body);
+            
             // Validar datos
             this.validateData({name, email, comment});
 

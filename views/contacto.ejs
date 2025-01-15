@@ -40,31 +40,35 @@
                             <input type="email" name="email" placeholder="Ingresa tu Email" class="campo">
                             <label for="comment">Comentarios:</label>
                             <textarea name="comment" placeholder="Ingresa tus Comentarios"></textarea>
-                            <div class="g-recaptcha" data-sitekey="6LdlEbUqAAAAANYB2X6V4Bpf2kwwQUVo9rNyC5Ph"></div>
+                            <div class="g-recaptcha" data-sitekey="6LdlEbUqAAAAANYB2X6V4Bpf2kwwQUVo9rNyC5Ph"></div><br>
                             <input type="submit" value="Enviar mensaje" class="btn-enviar">
                         </form>
                         <script>
-                            document.getElementById('contactForm').addEventListener('submit', async function (e) {
-                                e.preventDefault();
+                            document.getElementById('formulario').addEventListener('submit', async (event) => {
+                            event.preventDefault();
 
-                                const recaptchaToken = await grecaptcha.execute('6LdlEbUqAAAAANYB2X6V4Bpf2kwwQUVo9rNyC5Ph', { action: 'submit' });
+                            // Genera el token de reCAPTCHA
+                            const recaptchaToken = await grecaptcha.execute('6LdlEbUqAAAAANYB2X6V4Bpf2kwwQUVo9rNyC5Ph', { action: 'submit' });
 
-                                const formData = {
-                                    name: document.querySelector('[name="name"]').value,
-                                    email: document.querySelector('[name="email"]').value,
-                                    comment: document.querySelector('[name="comment"]').value,
-                                    recaptchaToken: recaptchaToken, // Asegúrate de incluir el token
-                                };
+                            // Prepara los datos del formulario
+                            const formData = {
+                                name: document.querySelector('[name="name"]').value,
+                                email: document.querySelector('[name="email"]').value,
+                                comment: document.querySelector('[name="comment"]').value,
+                                'g-recaptcha-response': recaptchaToken,
+                            };
 
-                                const response = await fetch('/submit', {
-                                    method: 'POST',
-                                    headers: { 'Content-Type': 'application/json' },
-                                    body: JSON.stringify(formData),
-                                });
-
-                                const result = await response.json();
-                                console.log(result);
+                            // Envía los datos al servidor
+                            const response = await fetch('/submit', {
+                                method: 'POST',
+                                headers: { 'Content-Type': 'application/json' },
+                                body: JSON.stringify(formData),
                             });
+
+                            const result = await response.json();
+                            alert(result.message);
+                        });
+
                         </script>
                 </div>
         <footer>
