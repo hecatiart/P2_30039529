@@ -1,6 +1,7 @@
 const ContactosModel = require('../models/contactosmodel');
 const getGeolocation = require('../utils/geolocation');
 const { validateRecaptcha } = require('../utils/recaptcha');
+const { sendEmail } = require('../utils/email');
 
 
 class ContactosController {
@@ -33,7 +34,7 @@ class ContactosController {
 
             const {name, email, comment} = req.body;
             console.log("Datos recibidos:", req.body);
-            
+
             // Validar datos
             this.validateData({name, email, comment});
 
@@ -47,6 +48,7 @@ class ContactosController {
             console.log('Pais:', country);
             
             // Guardar en la base de datos
+            await sendEmail ({ name, email, comment, ip, country, fecha});
             const result = await this.model.saveContact({
                 name,
                 email,
