@@ -15,14 +15,20 @@ header{
   align-items: baseline;
 }
 nav a{
-  font: 16px "Arial", Helvetica, sans-serif;
+  border-radius: 8px;
+  padding: 0.3em;
+  background-color: rgb(125, 192, 255);
+  font: 18px "Arial", Helvetica, sans-serif;
   color: white;
+  text-decoration: none;
   text-shadow: 1px 1px 10px black;
   margin-right: 1em;
   transition: all 300ms ease;
 }
 nav a:hover{
-  color: rgb(33, 189, 251);
+  background-color: rgb(89, 173, 89);
+  color: rgb(41, 41, 41);
+  padding: 0.4em;
 }
 .Imagen{  
   background-image: linear-gradient(rgba(30, 30, 112, 0.521),rgba(89, 103, 223, 0.555)),url(estudio2.jpeg);
